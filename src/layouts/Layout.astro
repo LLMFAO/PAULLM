@@ -1,0 +1,324 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+// Randomly select a color scheme
+const schemes = [
+  {
+    text: '#e2e8f0',
+    bg: '#0f172a',
+    accent: '#38bdf8',
+    secondary: '#0ea5e9',
+    cardBg: 'rgba(56, 189, 248, 0.03)',
+    navBg: 'rgba(15, 23, 42, 0.8)'
+  },
+  {
+    text: '#e5e5e5',
+    bg: '#171717',
+    accent: '#a3a3a3',
+    secondary: '#737373',
+    cardBg: 'rgba(163, 163, 163, 0.03)',
+    navBg: 'rgba(23, 23, 23, 0.8)'
+  },
+  {
+    text: '#171717',
+    bg: '#e5e5e5',
+    accent: '#525252',
+    secondary: '#737373',
+    cardBg: 'rgba(82, 82, 82, 0.03)',
+    navBg: 'rgba(229, 229, 229, 0.8)'
+  }
+];
+
+const scheme = schemes[Math.floor(Math.random() * schemes.length)];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Paul Pettit - AI Explorer & Tech" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="/" class="logo">PAULLM.COM</a>
+        <div class="nav-links">
+          <a href="https://chat.latentspaceai.com" class="nav-link">Chatbots</a>
+          <a href="/projects" class="nav-link">Projects</a>
+          <a href="/blog" class="nav-link">Blog</a>
+          <a href="https://lovable.dev/#via=paullm" class="nav-link loveable">Made Loveable ❤️</a>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/pauljpettit/" target="_blank" class="social-link">LinkedIn</a>
+          <a href="https://lovable.dev/#via=paullm" target="_blank" class="social-link">Made Loveable ❤️</a>
+        </div>
+      </div>
+    </footer>
+
+    <style define:vars={{
+      textColor: scheme.text,
+      bgColor: scheme.bg,
+      accentColor: scheme.accent,
+      secondaryColor: scheme.secondary,
+      cardBg: scheme.cardBg,
+      navBg: scheme.navBg
+    }}>
+      :root {
+        --text-color: var(--textColor);
+        --bg-color: var(--bgColor);
+        --accent-color: var(--accentColor);
+        --secondary-color: var(--secondaryColor);
+        --card-bg: var(--cardBg);
+        --nav-bg: var(--navBg);
+        --font-mono: 'Roboto Mono', monospace;
+      }
+    </style>
+
+    <style is:global>
+      * {
+        transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+        font-family: var(--font-mono);
+      }
+      
+      html {
+        background: var(--bg-color);
+        color: var(--text-color);
+        letter-spacing: 0.02em;
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        margin: 0;
+        min-height: 100vh;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: var(--nav-bg);
+        backdrop-filter: blur(10px);
+        z-index: 100;
+        border-bottom: 1px solid var(--accent-color);
+        border-bottom-opacity: 0.1;
+      }
+
+      .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .logo::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--accent-color);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover::after {
+        transform: translateX(0);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--accent-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .nav-link:hover {
+        opacity: 1;
+        color: var(--accent-color);
+      }
+
+      .nav-link:hover::after {
+        transform: scaleX(1);
+      }
+      
+      main {
+        margin: 5rem auto 2rem;
+        padding: 2rem;
+        width: 1200px;
+        max-width: calc(100% - 4rem);
+        position: relative;
+        flex: 1;
+      }
+
+      footer {
+        background: var(--nav-bg);
+        border-top: 1px solid var(--accent-color);
+        border-top-opacity: 0.1;
+        padding: 2rem 0;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .social-link {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .social-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--accent-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .social-link:hover {
+        opacity: 1;
+        color: var(--accent-color);
+      }
+
+      .social-link:hover::after {
+        transform: scaleX(1);
+      }
+      
+      a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+      }
+      
+      a:hover {
+        opacity: 0.8;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        line-height: 1.2;
+      }
+
+      code {
+        background: var(--card-bg);
+        padding: 0.2em 0.4em;
+        border-radius: 4px;
+        font-size: 0.9em;
+        border: 1px solid var(--accent-color);
+        border-opacity: 0.1;
+      }
+
+      .loveable {
+        position: relative;
+        color: var(--accent-color) !important;
+        font-weight: 500;
+      }
+
+      .loveable::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--accent-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .loveable:hover::after {
+        transform: scaleX(1);
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          gap: 1rem;
+        }
+
+        .social-links {
+          gap: 1rem;
+        }
+
+        main {
+          padding: 1rem;
+          margin-top: 4rem;
+        }
+
+        .logo {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </body>
+</html>

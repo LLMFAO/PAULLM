@@ -1,0 +1,256 @@
+---
+---
+<div id="projectsModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="markdown-content">
+      <div class="project-section">
+        <h2>🧪 AI Experiments</h2>
+        <div class="project-list">
+          <a href="https://chat.latentspaceai.com" class="project-item">
+            <div class="project-header">
+              <h3>Latent Space Chat</h3>
+              <span class="project-status">Live</span>
+            </div>
+            <p>Collection of fine-tuned language models and chatbots</p>
+          </a>
+          
+          <a href="https://github.com/yourusername/latent-8ball" class="project-item">
+            <div class="project-header">
+              <h3>Latent Space Magic 8 Ball</h3>
+              <span class="project-status">In Progress</span>
+            </div>
+            <p>We're not really sure what it does either. Ask it questions and it gives you answers influenced by latent space in LLM storage.</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-section">
+        <h2>🛠️ Tools I Love</h2>
+        <div class="project-list">
+          <a href="https://lovable.dev/#via=paullm" class="project-item">
+            <div class="project-header">
+              <h3>Loveable</h3>
+              <span class="project-status">Essential</span>
+            </div>
+            <p>The reason this site doesn't look like it was designed by a robot. Makes AI assistants look fabulous!</p>
+          </a>
+
+          <a href="https://graydient.ai/?ref=paullm" class="project-item">
+            <div class="project-header">
+              <h3>Graydient AI</h3>
+              <span class="project-status">Recommended</span>
+            </div>
+            <p>Powerful AI tools and infrastructure for developers.</p>
+          </a>
+
+          <a href="https://www.duetdisplay.com/?via=paullm" class="project-item">
+            <div class="project-header">
+              <h3>Duet</h3>
+              <span class="project-status">Recommended</span>
+            </div>
+            <p>Not AI, but really cool. Use your phone as a second monitor.</p>
+          </a>
+
+          <a href="https://railway.com?referralCode=paullm" class="project-item">
+            <div class="project-header">
+              <h3>Railway</h3>
+              <span class="project-status">Recommended</span>
+            </div>
+            <p>Deploy infrastructure, fast. Great for hosting AI models and applications.</p>
+          </a>
+
+          <a href="https://n8n.partnerlinks.io/paullm" class="project-item">
+            <div class="project-header">
+              <h3>n8n</h3>
+              <span class="project-status">Recommended</span>
+            </div>
+            <p>Fair-code licensed workflow automation tool. Perfect for AI workflows and automation.</p>
+          </a>
+
+          <a href="https://replicate.com?ref=paullm" class="project-item">
+            <div class="project-header">
+              <h3>Replicate</h3>
+              <span class="project-status">Recommended</span>
+            </div>
+            <p>Run AI models in the cloud. Perfect for testing and deploying AI models.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+  }
+
+  .modal-content {
+    background: var(--bg-color);
+    margin: 5% auto;
+    padding: 2rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+  }
+
+  .close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .close:hover {
+    transform: rotate(90deg);
+  }
+
+  .markdown-content {
+    color: var(--text-color);
+  }
+
+  .project-section {
+    margin-bottom: 3rem;
+  }
+
+  .project-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .project-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .project-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .project-item {
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--accent-color);
+    border-opacity: 0.1;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-item:hover {
+    transform: translateX(10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 2px 10px var(--card-bg);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--accent-color);
+  }
+
+  .project-status {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    font-weight: 500;
+  }
+
+  .project-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+
+  @keyframes modalSlideIn {
+    from {
+      transform: translateY(-10%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 90%;
+      margin: 10% auto;
+      padding: 1.5rem;
+    }
+
+    .project-item:hover {
+      transform: translateX(0);
+      transform: translateY(-2px);
+    }
+  }
+</style>
+
+<script>
+  // Modal functionality
+  const modal = document.getElementById('projectsModal');
+  const closeBtn = document.querySelector('.close');
+  const projectLinks = document.querySelectorAll('a[href="/projects"]');
+
+  projectLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  // Close on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'block') {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+</script>
